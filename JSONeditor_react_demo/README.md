@@ -12,7 +12,7 @@ npm install
 
 ## Run
 
-To run the demo:
+NB To run the demo:
 
 ```
 npm start
