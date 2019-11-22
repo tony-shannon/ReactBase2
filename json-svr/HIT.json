@@ -1,0 +1,268 @@
+{
+    "demog": {
+  "address": [
+    {
+      "city": "Leeds",
+      "country": "United Kingdom",
+      "district": "Yorks",
+      "line": [
+        "11A High Street"
+      ],
+      "postalCode": "LS1"
+    }
+  ],
+  "birthDate": "1950-06-21",
+  "deceasedBoolean": false,
+  "gender": "male",
+  "id": "21e9a1b0-4d71-4034-84fe-6342f2a751e4",
+  "identifier": [
+    {
+      "system": "https://fhir.nhs.uk/Id/nhs-number",
+      "value": 9999999001
+    }
+  ],
+  "name": [
+    {
+      "family": "Tweed",
+      "given": [
+        "Rob"
+      ],
+      "prefix": "Mr"
+    }
+  ],
+  "resourceType": "Patient",
+  "telecom": "0789 6667788"
+                },
+    "templateList": [
+  "IDCR Allergies List.v0",
+  "ECIS EVALUATION TEST",
+  "IDCR - Medication List.v0",
+  "IDCR - Generic MDT Output Report.v0",
+  "IDCR Procedures List.v0",
+  "IDCR - Vital Signs Encounter.v1",
+  "IDCR - Relevant contacts.v0",
+  "001861fc-2a0a-45cc-8d4d-20679be022bd",
+  "RIPPLE - Conformance Test template",
+  "IDCR - End of Life Patient Preferences.v0",
+  "LCR Handover Summary Report.v0",
+  "Ripple RCM - Chemo monitoring Report",
+  "LCR Medication List.v0",
+  "Vital Signs Encounter (Composition)",
+  "IDCR - Laboratory Order.v0",
+  "IDCR - Immunisation summary.v0",
+  "EHRN Episode details.v0",
+  "RIPPLE - Personal Notes.v1",
+  "Allergies",
+  "RESPECT_form_2-v0",
+  "IDCR - Service Request.v0",
+  "IDCR - Medication Statement List.v0",
+  "Body Mass History (NWIS)",
+  "IDCR - Problem List.v1",
+  "PSKY - Healthcheck.v0",
+  "NCHCD - Clinical notes.v0",
+  "LCR Problem List.v0",
+  "IDCR - Laboratory Test Report.v0",
+  "GP Encounter Event - LCR (composition).v2",
+  "IDCR - Generic MDT Output Report.v0",
+  "IDCR - Service tracker.v0",
+  "RIPPLE - Minimal referral.v0",
+  "IDCR - Procedures List.v1",
+  "IDCR - Minimal MDT Output Report.v0",
+  "action test",
+  "EHRN Admit interview.v0",
+  "IDCR - Laboratory Order.v0",
+  "RIPPLE - Clinical Notes.v1",
+  "DRS Fundus Severity for os doctor form",
+  "EHRN Yoga service.v0",
+  "DRS Fundus Severity for od doctor form",
+  "REMORA questionnaire v0",
+  "LCR Relevant Contacts List.v0",
+  "hospitalization_oceanehr",
+  "LCR Allergies List.v0",
+  "Ripple Dashboard Cache.v1",
+  "IDCR - Adverse Reaction List.v1",
+  "DiADeM Assessment.v0",
+  "RIPPLE - Height_Weight.v1",
+  "DiADeM Assessment.v1",
+  "Medinfo Vital signs.v0",
+  "IDCR Procedures List.v0",
+  "EHRN Massage service.v0",
+  "LCR Medication List.v0",
+  "IDCR Medication List.v0",
+  "RIPPLE - Minimal referral.v0",
+  "LCR Relevant Contacts List.v0",
+  "prescription",
+  "EHRN Admit and discharge details.v0",
+  "IDCR - Laboratory Test Report.v0",
+  "Nurse Form v2"
+                        ],
+    "headings_sample_data": 
+        {"allergy-fhir":
+            {
+  "data": {
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 1,
+    "timestamp": "2019-11-21T09:05:48.936Z",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "AllergyIntolerance",
+          "identifier": [
+            {
+              "system": "http://ethercis.org/compositionId",
+              "value": "be95b58f-92e6-4da9-9964-14367637a281::local.ethercis.com::1"
+            }
+          ],
+          "onset": "2019-11-21T09:05:48.931Z",
+          "recordedDate": "2019-11-21T09:05:48.931Z",
+          "recorder": {
+            "reference": "Practitioner/id",
+            "display": "Rob Tweed"
+          },
+          "patient": {
+            "reference": "Patient/9999999001",
+            "display": "Rob Tweed"
+          },
+          "substance": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "91936005",
+                "display": "Latex"
+              }
+            ]
+          },
+          "status": "active",
+          "type": "allergy",
+          "category": "other",
+          "reaction": [
+            {
+              "substance": {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "91936005",
+                    "display": "Latex"
+                  }
+                ],
+                "text": "Latex"
+              },
+              "certainty": "confirmed",
+              "manifestation": [
+                {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "28926001",
+                      "display": "Rashes"
+                    }
+                  ],
+                  "text": "Rashes"
+                }
+              ],
+              "description": "Rashes"
+            }
+          ],
+          "note": "Mildish"
+        }
+      }
+    ]
+  }
+            },
+         "allergy-pt": 
+            {
+            "heading": "allergies",
+             "synopsis": [
+            {
+            "sourceId": "ethercis-be95b58f-92e6-4da9-9964-14367637a281",
+            "source": "ethercis",
+            "dateCreated": 1572369680189,
+            "text": "Latex"
+            }
+        ]
+            }
+        },
+    "schemas":
+        {
+         "allergyfromOpenEHR":
+                 {
+            "ctx": {
+                "composer_name": "{{composer}}",
+                "health_care_facility|id": "999999-345",
+                "health_care_facility|name": "Home",
+                "id_namespace": "NHS-UK",
+                "id_scheme": "2.16.840.1.113883.2.1.4.3",
+                "language": "en",
+                "territory": "GB",
+                "time": "{{now}}"
+            },
+            "adverse_reaction_list": {
+                "allergies_and_adverse_reactions": {
+                "adverse_reaction_risk": [
+                    {
+                    "status|code": "at0127",
+                    "status|value": "Suspected",
+                    "status|terminology": "local",
+                    "criticality|code": "at0102",
+                    "criticality|value": "Low",
+                    "criticality|terminology": "local",
+                    "category|code": "at0121",
+                    "category|value": "Food",
+                    "category|terminology": "local",
+                    "onset_of_last_reaction": "1900-01-01T00:00:00.000Z",
+                    "reaction_mechanism|code": "at0059",
+                    "reaction_mechanism|value": "Immune mediated",
+                    "reaction_mechanism|terminology": "local",
+                    "reaction_details": {
+                        "certainty|code": "at0095",
+                        "certainty|value": "Suspected",
+                        "certainty|terminology": "local",
+                        "manifestation": [
+                        {
+                            "|value": "{{obj.value}}",
+                            "|code": "{{obj.code}}",
+                            "|terminology": "{{obj.terminology}}"
+                        }
+                        ],
+                        "onset_of_reaction": "1900-01-01T00:00:00.000Z",
+                        "severity|code": "at0093",
+                        "severity|value": "Mild",
+                        "severity|terminology": "local",
+                        "specific_substance|value": "{{obj.value}}",
+                        "specific_substance|code": "{{obj.code}}",
+                        "specific_substance|terminology": "{{obj.terminology}}",
+                        "reaction_description|value": "{{obj.value}}",
+                        "reaction_description|code": "{{obj.code}}",
+                        "reaction_description|terminology": "{{obj.terminology}}",
+                        "route_of_exposure|value": "{{obj.value}}",
+                        "route_of_exposure|code": "{{obj.code}}",
+                        "route_of_exposure|terminology": "{{obj.terminology}}",
+                        "comment|value": "{{obj.value}}",
+                        "comment|code": "{{obj.code}}",
+                        "comment|terminology": "{{obj.terminology}}"
+                    },
+                    "last_updated": "1900-01-01T00:00:00.000Z",
+                    "language|code": "en",
+                    "language|terminology": "ISO_639-1",
+                    "encoding|code": "UTF-8",
+                    "encoding|terminology": "IANA_character-sets",
+                    "causative_agent|value": "{{obj.value}}",
+                    "causative_agent|code": "{{obj.code}}",
+                    "causative_agent|terminology": "{{obj.terminology}}",
+                    "comment|value": "{{obj.value}}",
+                    "comment|code": "{{obj.code}}",
+                    "comment|terminology": "{{obj.terminology}}"
+                    }
+                ]
+                }
+            }
+                 }
+        },
+     "transforms" :
+     {
+       "key": "waiting for transforms"  
+     }   
+
+
+ }
