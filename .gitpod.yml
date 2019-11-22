@@ -1,2 +1,14 @@
 image: 
   file: Dockerfile
+
+ports: 
+ - port: 3000 # RA
+   onOpen: ignore
+ - port: 5000 #JSONserver
+   onOpen: ignore
+
+tasks:
+- name: JSONserver
+  command: json-server --watch json-svr/db.json --port 5000
+- name: React Admin
+  command: cd ra-liffey-1 && npm start
