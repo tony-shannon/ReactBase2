@@ -18,7 +18,10 @@ const App = () => (
         <Resource name="users" list={ListGuesser} />
          <Resource name="posts" list={ListGuesser} />  
          <Resource name="comments" list={ListGuesser} /> 
-             <Resource name="Patients" list={ListGuesser} /> 
+         <Resource name="Patients" list={ListGuesser} /> 
+         <Resource name="Schemas" list={ListGuesser} /> 
+        <Resource name="Templates" list={ListGuesser} /> 
+         <Resource name="Transforms" list={ListGuesser} /> 
     </Admin>
     <UserTableReactHooks />
     </div>

@@ -1,0 +1,307 @@
+{
+    "Schemas" : [
+{
+    "id": 1,
+    "name": "Allergy-Schema-from-openEHR",
+    "type": "output",
+    "schema": {   
+    "adverse_reaction_list": {
+        "_uid": "286b4246-b913-4f71-bbcf-cdc08f0ed423::example.ethercis.com::1",
+        "language|code": "en",
+        "language|terminology": "ISO_639-1",
+        "territory|code": "GB",
+        "territory|terminology": "ISO_3166-1",
+        "context": {
+        "_health_care_facility|id": "123456-123",
+        "_health_care_facility|id_scheme": "ETHERCIS-SCHEME",
+        "_health_care_facility|id_namespace": "DEMOGRAPHIC",
+        "_health_care_facility|name": "FACILITY",
+        "start_time": "2019-11-22T14:29:10.436Z",
+        "setting|code": "238",
+        "setting|value": "Other Care",
+        "setting|terminology": "openehr"
+        },
+        "allergies_and_adverse_reactions": {
+        "adverse_reaction_risk": [
+            {
+            "causative_agent": "DEFAULT_TEXT_VALUE",
+            "status|code": "at0127",
+            "status|value": "Suspected",
+            "status|terminology": "local",
+            "criticality|code": "at0102",
+            "criticality|value": "Low",
+            "criticality|terminology": "local",
+            "category|code": "at0121",
+            "category|value": "Food",
+            "category|terminology": "local",
+            "onset_of_last_reaction": "1900-01-01T00:00:00.000Z",
+            "reaction_mechanism|code": "at0059",
+            "reaction_mechanism|value": "Immune mediated",
+            "reaction_mechanism|terminology": "local",
+            "comment": "DEFAULT_TEXT_VALUE",
+            "reaction_details": {
+                "specific_substance": "DEFAULT_TEXT_VALUE",
+                "certainty|code": "at0095",
+                "certainty|value": "Suspected",
+                "certainty|terminology": "local",
+                "manifestation": [
+                "DEFAULT_TEXT_VALUE"
+                ],
+                "reaction_description": "DEFAULT_TEXT_VALUE",
+                "onset_of_reaction": "1900-01-01T00:00:00.000Z",
+                "severity|code": "at0093",
+                "severity|value": "Mild",
+                "severity|terminology": "local",
+                "route_of_exposure": "DEFAULT_TEXT_VALUE",
+                "comment": "DEFAULT_TEXT_VALUE"
+            },
+            "last_updated": "1900-01-01T00:00:00.000Z",
+            "language|code": "en",
+            "language|terminology": "ISO_639-1",
+            "encoding|code": "UTF-8",
+            "encoding|terminology": "IANA_character-sets"
+            }
+        ]
+        },
+        "composer|id": "1234-5678",
+        "composer|id_scheme": "ETHERCIS-TEST",
+        "composer|id_namespace": "DEMOGRAPHIC",
+        "composer|name": "Composer",
+        "composer": {
+        "_identifier": [
+            "1234-5678"
+        ]
+        }
+    }
+    }
+},
+{
+    "id":2,
+    "name": "Allergy-Schema-to-openEHR",
+    "type": "input",
+    "schema": {
+                "ctx": {
+                    "composer_name": "{{composer}}",
+                    "health_care_facility|id": "999999-345",
+                    "health_care_facility|name": "Home",
+                    "id_namespace": "NHS-UK",
+                    "id_scheme": "2.16.840.1.113883.2.1.4.3",
+                    "language": "en",
+                    "territory": "GB",
+                    "time": "{{now}}"
+                },
+                "adverse_reaction_list": {
+                    "allergies_and_adverse_reactions": {
+                    "adverse_reaction_risk": [
+                        {
+                        "status|code": "at0127",
+                        "status|value": "Suspected",
+                        "status|terminology": "local",
+                        "criticality|code": "at0102",
+                        "criticality|value": "Low",
+                        "criticality|terminology": "local",
+                        "category|code": "at0121",
+                        "category|value": "Food",
+                        "category|terminology": "local",
+                        "onset_of_last_reaction": "1900-01-01T00:00:00.000Z",
+                        "reaction_mechanism|code": "at0059",
+                        "reaction_mechanism|value": "Immune mediated",
+                        "reaction_mechanism|terminology": "local",
+                        "reaction_details": {
+                            "certainty|code": "at0095",
+                            "certainty|value": "Suspected",
+                            "certainty|terminology": "local",
+                            "manifestation": [
+                            {
+                                "|value": "{{obj.value}}",
+                                "|code": "{{obj.code}}",
+                                "|terminology": "{{obj.terminology}}"
+                            }
+                            ],
+                            "onset_of_reaction": "1900-01-01T00:00:00.000Z",
+                            "severity|code": "at0093",
+                            "severity|value": "Mild",
+                            "severity|terminology": "local",
+                            "specific_substance|value": "{{obj.value}}",
+                            "specific_substance|code": "{{obj.code}}",
+                            "specific_substance|terminology": "{{obj.terminology}}",
+                            "reaction_description|value": "{{obj.value}}",
+                            "reaction_description|code": "{{obj.code}}",
+                            "reaction_description|terminology": "{{obj.terminology}}",
+                            "route_of_exposure|value": "{{obj.value}}",
+                            "route_of_exposure|code": "{{obj.code}}",
+                            "route_of_exposure|terminology": "{{obj.terminology}}",
+                            "comment|value": "{{obj.value}}",
+                            "comment|code": "{{obj.code}}",
+                            "comment|terminology": "{{obj.terminology}}"
+                        },
+                        "last_updated": "1900-01-01T00:00:00.000Z",
+                        "language|code": "en",
+                        "language|terminology": "ISO_639-1",
+                        "encoding|code": "UTF-8",
+                        "encoding|terminology": "IANA_character-sets",
+                        "causative_agent|value": "{{obj.value}}",
+                        "causative_agent|code": "{{obj.code}}",
+                        "causative_agent|terminology": "{{obj.terminology}}",
+                        "comment|value": "{{obj.value}}",
+                        "comment|code": "{{obj.code}}",
+                        "comment|terminology": "{{obj.terminology}}"
+                        }
+                    ]
+                    }
+                }
+                }
+
+},
+{   "id":3,
+    "name": "Medicines-Schema-to-openEHR",
+    "type": "input",
+                    "schema": {
+                "ctx": {
+                    "composer_name": "{{composer}}",
+                    "health_care_facility|id": "999999-345",
+                    "health_care_facility|name": "Home",
+                    "id_namespace": "NHS-UK",
+                    "id_scheme": "2.16.840.1.113883.2.1.4.3",
+                    "language": "en",
+                    "territory": "GB",
+                    "time": "{{now}}"
+                },
+                "medication_statement_list": {
+                    "medication_and_medical_devices": {
+                    "medication_order": [
+                        {
+                        "order": [
+                            {
+                            "additional_instruction": [
+                                {
+                                "|value": "{{obj.value}}",
+                                "|code": "{{obj.code}}",
+                                "|terminology": "{{obj.terminology}}"
+                                }
+                            ],
+                            "clinical_indication": [
+                                {
+                                "|value": "{{obj.value}}",
+                                "|code": "{{obj.code}}",
+                                "|terminology": "{{obj.terminology}}"
+                                }
+                            ],
+                            "order_details": {
+                                "order_start_date_time": "1900-01-01T00:00:00.000Z",
+                                "order_stop_date_time": "1900-01-01T00:00:00.000Z",
+                                "order_summary": {
+                                "course_status|code": "at0021",
+                                "course_status|value": "Active",
+                                "course_status|terminology": "local"
+                                }
+                            },
+                            "timing": "DEFAULT_TIMING",
+                            "timing|formalism": "DEFAULT_FORMALISM",
+                            "medication_item|value": "{{obj.value}}",
+                            "medication_item|code": "{{obj.code}}",
+                            "medication_item|terminology": "{{obj.terminology}}",
+                            "route|value": "{{obj.value}}",
+                            "route|code": "{{obj.code}}",
+                            "route|terminology": "{{obj.terminology}}",
+                            "body_site|value": "{{obj.value}}",
+                            "body_site|code": "{{obj.code}}",
+                            "body_site|terminology": "{{obj.terminology}}",
+                            "overall_directions_description|value": "{{obj.value}}",
+                            "overall_directions_description|code": "{{obj.code}}",
+                            "overall_directions_description|terminology": "{{obj.terminology}}",
+                            "dose_amount_description|value": "{{obj.value}}",
+                            "dose_amount_description|code": "{{obj.code}}",
+                            "dose_amount_description|terminology": "{{obj.terminology}}",
+                            "dose_timing_description|value": "{{obj.value}}",
+                            "dose_timing_description|code": "{{obj.code}}",
+                            "dose_timing_description|terminology": "{{obj.terminology}}"
+                            }
+                        ],
+                        "narrative": "DEFAULT_NARRATIVE",
+                        "language|code": "en",
+                        "language|terminology": "ISO_639-1",
+                        "encoding|code": "UTF-8",
+                        "encoding|terminology": "IANA_character-sets"
+                        }
+                    ]
+                    }
+                }
+                }
+
+},
+{   "id":4,
+    "name": "Medicines-Schema-from-openEHR",
+    "type": "output",
+                "schema": {
+            "medication_statement_list": {
+                "_uid": "fd28bc69-3afa-4a57-9bf9-35096e395e8a::example.ethercis.com::1",
+                "language|code": "en",
+                "language|terminology": "ISO_639-1",
+                "territory|code": "GB",
+                "territory|terminology": "ISO_3166-1",
+                "context": {
+                "_health_care_facility|id": "123456-123",
+                "_health_care_facility|id_scheme": "ETHERCIS-SCHEME",
+                "_health_care_facility|id_namespace": "DEMOGRAPHIC",
+                "_health_care_facility|name": "FACILITY",
+                "start_time": "2019-11-22T14:39:34.401Z",
+                "setting|code": "238",
+                "setting|value": "Other Care",
+                "setting|terminology": "openehr"
+                },
+                "medication_and_medical_devices": {
+                "medication_order": [
+                    {
+                    "order": [
+                        {
+                        "medication_item": "DEFAULT_TEXT_VALUE",
+                        "route": "DEFAULT_TEXT_VALUE",
+                        "body_site": "DEFAULT_TEXT_VALUE",
+                        "overall_directions_description": "DEFAULT_TEXT_VALUE",
+                        "dose_amount_description": "DEFAULT_TEXT_VALUE",
+                        "dose_timing_description": "DEFAULT_TEXT_VALUE",
+                        "additional_instruction": [
+                            "DEFAULT_TEXT_VALUE"
+                        ],
+                        "clinical_indication": [
+                            "DEFAULT_TEXT_VALUE"
+                        ],
+                        "order_details": {
+                            "order_start_date_time": "1900-01-01T00:00:00.000Z",
+                            "order_stop_date_time": "1900-01-01T00:00:00.000Z",
+                            "order_summary": {
+                            "course_status|code": "at0021",
+                            "course_status|value": "Active",
+                            "course_status|terminology": "local"
+                            }
+                        },
+                        "timing": "DEFAULT_TIMING",
+                        "timing|formalism": "DEFAULT_FORMALISM"
+                        }
+                    ],
+                    "narrative": "DEFAULT_NARRATIVE",
+                    "language|code": "en",
+                    "language|terminology": "ISO_639-1",
+                    "encoding|code": "UTF-8",
+                    "encoding|terminology": "IANA_character-sets"
+                    }
+                ]
+                },
+                "composer|id": "1234-5678",
+                "composer|id_scheme": "ETHERCIS-TEST",
+                "composer|id_namespace": "DEMOGRAPHIC",
+                "composer|name": "Composer",
+                "composer": {
+                "_identifier": [
+                    "1234-5678"
+                ]
+                }
+            }
+            }
+
+}
+
+]
+
+}

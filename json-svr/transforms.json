@@ -1,0 +1,135 @@
+{
+   "Transforms" : [
+       {   "id": 1,
+           "heading" : "allergy",
+           "type": "openehr_to_fhir",
+           "transform": {
+                "resourceType": "AllergyIntolerance",
+                "identifier": [
+                    {
+                    "system": "http://ethercis.org/compositionId",
+                    "value": "{{adverse_reaction_list._uid}}"
+                    }
+                ],
+                "onset": "=> getDate(start_time)",
+                "recordedDate": "=> getDate(start_time)",
+                "recorder": {
+                    "reference": "Practitioner/id",
+                    "display": "{{adverse_reaction_list['composer|name']}}"
+                },
+                "patient": {
+                    "reference": "Patient/{{patientId}}",
+                    "display": "{{patientName}}"
+                },
+                "substance": {
+                    "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent|code']}}",
+                        "display": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent|value']}}"
+                    }
+                    ]
+                },
+                "status": "active",
+                "type": "allergy",
+                "category": "other",
+                "reaction": [
+                    {
+                    "substance": {
+                        "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent|code']}}",
+                            "display": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent|value']}}"
+                        }
+                        ],
+                        "text": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent|value']}}"
+                    },
+                    "certainty": "confirmed",
+                    "manifestation": [
+                        {
+                        "coding": [
+                            {
+                            "system": "http://snomed.info/sct",
+                            "code": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0].reaction_details.manifestation[0]['|code']}}",
+                            "display": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0].reaction_details.manifestation[0]['|value']}}"
+                            }
+                        ],
+                        "text": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0].reaction_details.manifestation[0]['|value']}}"
+                        }
+                    ],
+                    "description": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0].reaction_details.manifestation[0]['|value']}}"
+                    }
+                ],
+                "note": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0].reaction_details.comment}}"
+                }  
+       },
+
+       {   "id": 2,
+           "heading" : "allergy",
+           "type": "openehr_to_pulsetile_summary",
+           "transform": {
+                "sourceId": "{{sourceId}}",
+                "source": "ethercis",
+                "dateCreated": "=> getTime(adverse_reaction_list.context.start_time)",
+                "cause": "=> either(adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent|value'],adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent'])",
+                "reaction": "=> either(adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0].reaction_details.manifestation[0]['|value'])"
+                }
+       },
+       {   "id": 3,
+           "heading" : "allergy",
+           "type": "pulsetile_to_openEHR",
+           "transform": {
+                            "ctx": {
+                                "composer_name": "{{author}}",
+                                "health_care_facility|id": "999999-345",
+                                "health_care_facility|name": "Home",
+                                "id_namespace": "NHS-UK",
+                                "id_scheme": "2.16.840.1.113883.2.1.4.3",
+                                "language": "en",
+                                "territory": "GB",
+                                "time": "{{now}}"
+                            },
+                            "adverse_reaction_list": {
+                                "allergies_and_adverse_reactions": {
+                                "adverse_reaction_risk": [
+                                    {
+                                    "reaction_details": {
+                                        "manifestation": [
+                                        {
+                                            "|value": "{{reaction}}"
+                                        }
+                                        ]
+                                    },
+                                    "causative_agent|code": "{<causeTerminology>}",
+                                    "causative_agent|terminology": "{<causeCode>}",
+                                    "causative_agent|value": "{{cause}}"
+                                    }
+                                ]
+                                }
+                            }
+                            }
+       },
+       {   "id": 4,
+           "heading" : "allergy",
+           "type": "openEHR to PulseTile Detail",
+           "transform": {
+                    "sourceId": "{{sourceId}}",
+                    "source": "ethercis",
+                    "author": "{{adverse_reaction_list['composer|name']}}",
+                    "dateCreated": "=> getTime(adverse_reaction_list.context.start_time)",
+                    "cause": "=> either(adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent|value'],adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent'])",
+                    "causeCode": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent|code']}}",
+                    "causeTerminology": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0]['causative_agent|terminology']}}",
+                    "reaction": "=> either(adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0].reaction_details.manifestation[0]['|value'],adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0].reaction_details.manifestation[0])",
+                    "terminologyCode": "{{adverse_reaction_list.allergies_and_adverse_reactions.adverse_reaction_risk[0].reaction_details.manifestation[0]['|code']}}",
+                    "originalComposition": "",
+                    "originalSource": ""
+                    }
+
+       }
+
+
+
+   ] 
+}
