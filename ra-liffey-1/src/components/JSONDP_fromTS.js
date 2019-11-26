@@ -64,9 +64,11 @@ exports["default"] = (function (apiUrl, httpClient) {
             var _b = params.sort, field = _b.field, order = _b.order;
             var query = __assign(__assign({}, ra_core_1.fetchUtils.flattenObject(params.filter)), { _sort: field, _order: order, _start: (page - 1) * perPage, _end: page * perPage });
             var url = apiUrl + "/" + resource + "?" + query_string_1.stringify(query);
-            console.log("Params: " + JSON.stringify(params));
+            console.log("Get List from : " + resource + " via this query: " + JSON.stringify(query));
+            console.log("Request Params FYI: " + JSON.stringify(params));
             return httpClient(url).then(function (_a) {
                 var headers = _a.headers, json = _a.json;
+                console.log("Headers involved " + JSON.stringify(headers) + " JSON return: " + JSON.stringify(json));
                 if (!headers.has('x-total-count')) {
                     throw new Error('The X-Total-Count header is missing in the HTTP Response. The jsonServer Data Provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare X-Total-Count in the Access-Control-Expose-Headers header?');
                 }
