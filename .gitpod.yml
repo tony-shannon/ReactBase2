@@ -11,4 +11,5 @@ tasks:
 - name: JSONserver
   command: json-server --watch json-svr/db.json --port 5000
 - name: React Admin
+  init: cd ra-liffey-1 && npm install
   command: cd ra-liffey-1 && npm start
